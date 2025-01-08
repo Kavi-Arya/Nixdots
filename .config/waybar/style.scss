@@ -1,0 +1,480 @@
+// Angelo's Waybar config
+// https://github.com/angelofallars/dotfiles
+
+// Use Sass to compile this file down to CSS and restyle my bar.
+// https://sass-lang.com/installhttps://sass-lang.com/install
+// After downloading Sass, run this in this directory
+// to compile your changes:
+// $ sass --watch . --no-source-map
+
+// NOTE: If the Japanese River workspace icons do not show up,
+// you should install the Han Sans JP font.
+// Arch Linux:
+// $ sudo pacman -S adobe-source-han-sans-jp-fonts
+
+@use 'colors';
+
+// Distance of the entire bar from the sides
+$screen-margin: 7px;
+
+$vertical-margin-top: 4px;
+$vertical-margin-bottom: 4px;
+
+// Margin/padding of individual modules
+$module-margin: 4.5px;
+$module-padding: 0px;
+
+// Font config
+$font: "JetBrains Mono Nerd Font";
+$font-size: 17px;
+$font-weight: 500;
+
+// How far away should the box shadow effect be diagonally
+$box-shadow-distance: 0px;
+
+// Border radius. Turning this option up will also round the offset shadows.
+$bar-border-radius: 2px;
+
+// -------------------------
+// Actual styling of the bar
+// -------------------------
+
+@mixin square-shadow {
+  box-shadow: $box-shadow-distance $box-shadow-distance 0 colors.$shadow;
+  margin-bottom: $box-shadow-distance;
+  margin-right: $box-shadow-distance;
+}
+
+@mixin single-module {
+  margin-left: $module-margin;
+  margin-right: $module-margin + $box-shadow-distance;
+  padding-left: $module-padding + 8px;
+  padding-right: $module-padding + 8px;
+
+  background: colors.$bg;
+  color: colors.$fg;
+
+  border-radius: $bar-border-radius + 2px;
+
+  border: 1px solid colors.$surface0;
+  border-top-color: colors.$surface1;
+  border-bottom-color: colors.$mantle;
+  border-bottom-width: 2px;
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5,5,15,0.9);
+}
+
+// !! If you add new custom modules, put their class name in here.
+#backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+#pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+#mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
+#custom-gpu-temp, #custom-artix
+{
+  @include single-module;
+
+  padding-left: $module-padding + 7px;
+  padding-right: $module-padding + 7px;
+
+}
+
+$accent-color: colors.$fg;
+
+#window {
+  background-color: transparent;
+  margin-right: 10px;
+  border: 0;
+  box-shadow: none;
+  color: $accent-color;
+  font-weight: 700;
+  text-shadow: 0 0 3px scale-color(colors.$crust, $alpha: 100%);
+  // animation-name: rainbow;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count:  infinite;
+}
+
+#window.empty {
+  color: red;
+}
+
+#foreign-time, #cpu-memory, #group-clock {
+  @include single-module;
+
+  * {
+    border: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+* {
+  min-height: 0;
+}
+
+window#waybar {
+  background: scale-color(colors.$crust, $alpha: -60%);
+  color: colors.$fg;
+}
+
+.modules-left, .modules-center, .modules-right {
+  background: transparent;
+  border-radius: $bar-border-radius;
+  font-family: $font, monospace;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  margin-top: $vertical-margin-top;
+  margin-bottom: $vertical-margin-bottom;
+}
+
+.modules-left {
+  margin-left: $screen-margin;
+}
+
+.modules-right {
+  margin-right: $screen-margin;
+}
+
+#mpd, #custom-mpd-song-scroll {
+  font-size: $font-size - 2.5px;
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+#mpd {
+  color: colors.$accent-color-no-bg;
+  margin-right: 2px;
+  margin-left: $module-margin;
+}
+
+#custom-mpd-song-scroll {
+  color: colors.$white-text;
+  border-radius: 3px;
+  min-height: 18px;
+}
+
+// River tags
+
+#workspaces {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+  border: none;
+}
+
+@keyframes new-button {
+  from {
+    opacity: 0;
+    min-width: 0px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+#workspaces button {
+  font-weight: 600;
+  padding: 0 0px;
+  margin: 0 2px;
+  min-width: 31px;
+  font-size: 22px;
+  border-radius: 50%;
+  color: colors.$magenta;
+
+  background: colors.$base;
+  border: 1px solid colors.$surface0;
+  border-bottom-width: 2px;
+  outline: red solid 1px;
+  box-shadow: 0 0 0px 1px rgba(5,5,15,1);
+
+  transition: all 0.25s, background 0.15s, color 0s;
+  transition-timing-function: ease-out;
+
+  animation-name: new-button;
+  animation-duration: 0.22s;
+}
+
+#workspaces button:hover  {
+  background: colors.$surface1;
+  border-color: colors.$surface2;
+  text-shadow: none;
+  border-radius: 9px;
+  transition: all 0.07s;
+}
+
+$gradient-degree: 155deg;
+
+$radial-pos: ellipse farthest-corner at 12px -24px;
+
+@keyframes active-button {
+  0% {
+    background: radial-gradient($radial-pos,
+      colors.$red,
+      colors.$peach,
+      colors.$yellow,
+      colors.$green,
+      colors.$blue,
+      colors.$mauve,
+    );
+  }
+  16% {
+    background: radial-gradient($radial-pos,
+      colors.$mauve,
+      colors.$red,
+      colors.$peach,
+      colors.$yellow,
+      colors.$green,
+      colors.$blue,
+    );
+  }
+  33% {
+    background: radial-gradient($radial-pos,
+      colors.$blue,
+      colors.$mauve,
+      colors.$red,
+      colors.$peach,
+      colors.$yellow,
+      colors.$green,
+    );
+  }
+  50% {
+    background: radial-gradient($radial-pos,
+      colors.$green,
+      colors.$blue,
+      colors.$mauve,
+      colors.$red,
+      colors.$peach,
+      colors.$yellow,
+    );
+  }
+  66% {
+    background: radial-gradient($radial-pos,
+      colors.$yellow,
+      colors.$green,
+      colors.$blue,
+      colors.$mauve,
+      colors.$red,
+      colors.$peach,
+    );
+  }
+  83% {
+    background: radial-gradient($radial-pos,
+      colors.$peach,
+      colors.$yellow,
+      colors.$green,
+      colors.$blue,
+      colors.$mauve,
+      colors.$red,
+    );
+  }
+  100% {
+    background: radial-gradient($radial-pos,
+      colors.$red,
+      colors.$peach,
+      colors.$yellow,
+      colors.$green,
+      colors.$blue,
+      colors.$mauve,
+    );
+  }
+}
+
+#workspaces button.active {
+  color: colors.$bg;
+  font-weight: 700;
+  background: radial-gradient($radial-pos,
+    colors.$red,
+    colors.$peach,
+    colors.$yellow,
+    colors.$green,
+    colors.$blue,
+    colors.$mauve,
+  );
+
+  border: none;
+  box-shadow: 0 0 0px 1px rgba(5,5,15,0.15);
+  border-radius: 9px;
+  min-width: 45px;
+
+  transition: all 0.25s, color 0s, border 0s, font-weight 0s, background 0.15s;
+
+  animation-name: active-button;
+  animation-direction: reverse;
+  animation-duration: 3s;
+  animation-delay: 0.15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+#workspaces button.urgent {
+  color: colors.$red;
+}
+
+#workspaces button.hidden {
+  color: colors.$red;
+}
+
+@keyframes rainbow {
+  0% {
+    color: colors.$red;
+    text-shadow:
+    0 0 8px colors.$red,
+    0 0 4px colors.$crust,
+    ;
+  }
+  16% {
+    color: colors.$peach;
+    text-shadow:
+    0 0 8px colors.$peach,
+    0 0 4px colors.$crust,
+    ;
+  }
+  33% {
+    color: colors.$yellow;
+    text-shadow:
+    0 0 8px colors.$yellow,
+    0 0 4px colors.$crust,
+    ;
+  }
+  50% {
+    color: colors.$green;
+    text-shadow:
+    0 0 8px colors.$green,
+    0 0 4px colors.$crust,
+    ;
+  }
+  66% {
+    color: colors.$blue;
+    text-shadow:
+    0 0 8px colors.$blue,
+    0 0 4px colors.$crust,
+    ;
+  }
+  83% {
+    color: colors.$magenta;
+    text-shadow:
+    0 0 8px colors.$magenta,
+    0 0 4px colors.$crust,
+    ;
+  }
+  100% {
+    color: colors.$red;
+    text-shadow:
+    0 0 8px colors.$red,
+    0 0 4px colors.$crust,
+    ;
+  }
+}
+
+#custom-artix {
+  color: colors.$red;
+  text-shadow:
+  0 0 8px colors.$red,
+  0 0 4px colors.$crust,
+  ;
+
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  background-color: transparent;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 14px;
+  padding: 0;
+
+  animation-name: rainbow;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeglow {
+  0% {
+    text-shadow: 0 0 0px scale-color(colors.$fg, $alpha: -25%), 0 0 2px scale-color(colors.$crust, $alpha: -5%);
+    color: colors.$fg;
+  }
+  50% {
+    text-shadow: 0 0 0px scale-color(colors.$fg, $alpha: -25%), 0 0 2px scale-color(colors.$crust, $alpha: -5%);
+    color: colors.$fg;
+  }
+  100% {
+    text-shadow: 0 0 7px scale-color(colors.$green, $alpha: -25%), 0 0 2px scale-color(colors.$crust, $alpha: -5%);
+  }
+}
+
+#custom-spotify {
+  @include single-module;
+  // background-color: transparent;
+  // margin-right: 9px;
+  color: colors.$green;
+  font-weight: 700;
+  text-shadow: 0 0 6px scale-color(colors.$green, $alpha: -25%), 0 0 2px scale-color(colors.$crust, $alpha: -5%);
+  animation-name: rainbow;
+  animation-duration: 8.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+tooltip {
+  font-weight: 500;
+  color: colors.$fg;
+  background: colors.$base;
+
+  border: 1px solid colors.$surface0;
+  border-top-color: colors.$surface1;
+  border-bottom-color: colors.$mantle;
+  border-bottom-width: 2px;
+
+  box-shadow: 0 0 0px 1px rgba(5,5,15,1);
+
+  text-shadow: none;
+
+  font-family: $font, monospace;
+  font-size: $font-size;
+  padding: 20px;
+  margin: 10px;
+  animation-name: fadein;
+  animation-duration: 0.05s;
+}
+
+#tray {
+  @include single-module;
+  $padding: calc($module-padding / 2) + 9px;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+#tray menu {
+  background: colors.$bg;
+  color: colors.$fg;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+
+  font-family: $font, monospace;
+  font-size: $font-size;
+  font-weight: $font-weight;
+}

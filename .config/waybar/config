@@ -1,0 +1,31 @@
+[
+    {
+        "layer": "top",
+        "output": "HDMI-A-1",
+        // "margin-right": 80,
+        "height": 38,
+        "spacing": 0,
+        "include": [
+            "~/.config/waybar/default-modules.json",
+        ],
+
+        "modules-left": [
+            "custom/artix",
+            "hyprland/workspaces",
+            "cpu",
+            "custom/temp",
+            "memory",
+            "custom/cpubars",
+        ],
+        "modules-center": [
+            "hyprland/window",
+        ],
+        "modules-right": [
+            "custom/nettrf",
+            "disk",
+            "pulseaudio",
+            "tray",
+            "clock",
+        ],
+    }
+]

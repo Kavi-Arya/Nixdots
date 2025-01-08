@@ -1,0 +1,377 @@
+#backlight, #battery, #cpu, #disk, #idle_inhibitor, #keyboard-state,
+#pulseaudio, #clock, #tags, #language, #memory, #network, #sndio,
+#mode, #window, #workspaces, #temperature, #taskbar, #workspaces,
+#custom-treefetch-downloads, #custom-update-count, #custom-axyl-downloads,
+#custom-gpu-temp, #custom-artix, #custom-cpubars, #custom-nettrf{
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#window {
+  background-color: transparent;
+  margin-right: 10px;
+  border: 0;
+  box-shadow: none;
+  color: #cdd6f4;
+  font-weight: 700;
+  text-shadow: 0 0 3px #11111b;
+  animation-timing-function: ease-in-out;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+#window.empty {
+  color: red;
+}
+
+#foreign-time, #cpu-memory, #group-clock {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+}
+#foreign-time *, #cpu-memory *, #group-clock * {
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+* {
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(17, 17, 27, 0.4);
+  color: #cdd6f4;
+}
+
+.modules-left, .modules-center, .modules-right {
+  background: transparent;
+  border-radius: 2px;
+  font-family: "Material Design Icons-Regular", "JetBrains Mono Nerd Font";
+  
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.modules-left {
+  margin-left: 7px;
+}
+
+.modules-right {
+  margin-right: 7px;
+}
+
+#mpd, #custom-mpd-song-scroll {
+  font-size: 14.5px;
+  margin-bottom: 4px;
+  padding: 0;
+}
+
+#mpd {
+  color: #1e1e2e;
+  margin-right: 2px;
+  margin-left: 4.5px;
+}
+
+#custom-mpd-song-scroll {
+  color: #cdd6f4;
+  border-radius: 3px;
+  min-height: 18px;
+}
+
+#workspaces {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  box-shadow: none;
+  border: none;
+}
+
+@keyframes new-button {
+  from {
+    opacity: 0;
+    min-width: 0px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+#workspaces button {
+  font-weight: 600;
+  padding: 0 0px;
+  margin: 0 2px;
+  min-width: 31px;
+  font-size: 22px;
+  border-radius: 50%;
+  color: #cba6f7;
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-bottom-width: 2px;
+  outline: red solid 1px;
+  box-shadow: 0 0 0px 1px rgb(5, 5, 15);
+  transition: all 0.25s, background 0.15s, color 0s;
+  transition-timing-function: ease-out;
+  animation-name: new-button;
+  animation-duration: 0.22s;
+}
+
+#workspaces button:hover {
+  background: #45475a;
+  border-color: #585b70;
+  text-shadow: none;
+  border-radius: 9px;
+  transition: all 0.07s;
+}
+
+@keyframes active-button {
+  0% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  }
+  16% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #cba6f7, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa);
+  }
+  33% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #89b4fa, #cba6f7, #f38ba8, #fab387, #f9e2af, #a6e3a1);
+  }
+  50% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #a6e3a1, #89b4fa, #cba6f7, #f38ba8, #fab387, #f9e2af);
+  }
+  66% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f9e2af, #a6e3a1, #89b4fa, #cba6f7, #f38ba8, #fab387);
+  }
+  83% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7, #f38ba8);
+  }
+  100% {
+    background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  }
+}
+#workspaces button.active {
+  color: #1e1e2e;
+  font-weight: 700;
+  background: radial-gradient(ellipse farthest-corner at 12px -24px, #f38ba8, #fab387, #f9e2af, #a6e3a1, #89b4fa, #cba6f7);
+  border: none;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.15);
+  border-radius: 9px;
+  min-width: 45px;
+  transition: all 0.25s, color 0s, border 0s, font-weight 0s, background 0.15s;
+  animation-name: active-button;
+  animation-direction: reverse;
+  animation-duration: 3s;
+  animation-delay: 0.15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+#workspaces button.urgent {
+  color: #f38ba8;
+}
+
+#workspaces button.hidden {
+  color: #f38ba8;
+}
+
+@keyframes rainbow {
+  0% {
+    color: #f38ba8;
+    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  }
+  16% {
+    color: #fab387;
+    text-shadow: 0 0 8px #fab387, 0 0 4px #11111b;
+  }
+  33% {
+    color: #f9e2af;
+    text-shadow: 0 0 8px #f9e2af, 0 0 4px #11111b;
+  }
+  50% {
+    color: #a6e3a1;
+    text-shadow: 0 0 8px #a6e3a1, 0 0 4px #11111b;
+  }
+  66% {
+    color: #89b4fa;
+    text-shadow: 0 0 8px #89b4fa, 0 0 4px #11111b;
+  }
+  83% {
+    color: #cba6f7;
+    text-shadow: 0 0 8px #cba6f7, 0 0 4px #11111b;
+  }
+  100% {
+    color: #f38ba8;
+    text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  }
+}
+#custom-artix {
+  color: #f38ba8;
+  text-shadow: 0 0 8px #f38ba8, 0 0 4px #11111b;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  background-color: transparent;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 14px;
+  padding: 0;
+  animation-name: rainbow;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeglow {
+  0% {
+    text-shadow: 0 0 0px rgba(205, 214, 244, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+    color: #cdd6f4;
+  }
+  50% {
+    text-shadow: 0 0 0px rgba(205, 214, 244, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+    color: #cdd6f4;
+  }
+  100% {
+    text-shadow: 0 0 7px rgba(166, 227, 161, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  }
+}
+
+#custom-cpubars {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  color: #a6e3a1;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(166, 227, 161, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  animation-name: rainbow;
+  animation-duration: 8.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+#custom-spotify {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  color: #a6e3a1;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(166, 227, 161, 0.75), 0 0 2px rgba(17, 17, 27, 0.95);
+  animation-name: rainbow;
+  animation-duration: 8.5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+tooltip {
+  font-weight: 500;
+  color: #cdd6f4;
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  box-shadow: 0 0 0px 1px rgb(5, 5, 15);
+  text-shadow: none;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 17px;
+  padding: 20px;
+  margin: 10px;
+  animation-name: fadein;
+  animation-duration: 0.05s;
+}
+
+#tray {
+  margin-left: 4.5px;
+  margin-right: 4.5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 4px;
+  border: 1px solid #313244;
+  border-top-color: #45475a;
+  border-bottom-color: #181825;
+  border-bottom-width: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0px 1px rgba(5, 5, 15, 0.9);
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+#tray menu {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=style.css.map */
